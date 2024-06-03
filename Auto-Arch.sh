@@ -11,7 +11,7 @@ turquoise="\e[0;36m\033[1m"
 gray="\e[0;37m\033[1m"
 deleteLine="\033[K"
 
-#Variablesy
+#Variables
 dir=$(pwd)
 package_dependencies="alacritty bat base-devel exa feh firefox htop lightdm lightdm-gtk-greeter neofetch network-manager-applet picom ranger rofi scrot starship xclip"
 
@@ -51,7 +51,7 @@ if [ $UID -eq 0 ]; then
 fi
 trap ctrl_c SIGINT
 title
-trap ctr
+export XDG_CONFIG_HOME="~/.config"
 echo -e "${blue}[+] Synchronizing package databases...${endColour}"
 sudo pacman -Sy
 
@@ -78,15 +78,10 @@ check_package_installation
 echo -e "${blue}[+] Starting configuration of the enviroment... ${endColour}"
 sleep 1
 pip install --break-packages psutil
+
 echo -e "${blue}Setting up Wallpaper...${endColour}"
-if [[ ! -d ~/Wallpapers ]]; then
-    mkdir ~/Wallpapers
-fi
 cp -rv ${dir}/wallpapers ~/
 
-echo -e "${blue}[+] STARTING QTILE${endColour}"
-sleep 5
-qtile start
 
 echo -e "${blue}Setting up configuration files...${endColour}"
 cp -rv ${dir}/config/* /home/${USER}/.config/

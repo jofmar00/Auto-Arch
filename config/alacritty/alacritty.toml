@@ -1,22 +1,20 @@
-import = [
-	"/home/$USER/.config/alacritty/Themes/monokai_charcoal.toml"
-]
+import = ["~/.config/alacritty/Themes/monokai_charcoal.toml"]
 
 [font]
 size = 14.0
 
 [font.bold]
-family = "mononoki Nerd Font"
+family = "UbuntuMono Nerd Font"
 style = "Bold"
 
 [font.bold_italic]
-family = "mononoki Nerd Font"
+family = "UbuntuMono Nerd Font"
 style = "Bold Italic"
 
 [font.italic]
-family = "mononoki Nerd Font"
+family = "UbuntuMono Nerd Font"
 style = "Italic"
 
 [font.normal]
-family = "mononoki Nerd Font"
+family = "UbuntuMono Nerd Font"
 style = "Regular"
