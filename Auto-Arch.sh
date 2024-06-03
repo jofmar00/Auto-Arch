@@ -11,9 +11,9 @@ turquoise="\e[0;36m\033[1m"
 gray="\e[0;37m\033[1m"
 deleteLine="\033[K"
 
-#Variables
+#Variablesy
 dir=$(pwd)
-package_dependencies="alacritty bat exa feh htop lightdm lightdm-gtk-greeter neofetch nm-applet picom ranger rofi scrot xclip"
+package_dependencies="alacritty bat base-devel exa feh firefox htop lightdm lightdm-gtk-greeter neofetch network-manager-applet picom ranger rofi scrot starship xclip"
 
 #####FUNCTIONS#####
 function title(){
@@ -32,6 +32,7 @@ function check_package_installation(){
         exit 1
     else
         echo -e "${green}[+] Package installation succesfull! ${endColour}"
+        clear
     fi
 }
 
@@ -53,7 +54,7 @@ echo -e "${blue}[+] Synchronizing package databases...${endColour}"
 sudo pacman -Sy
 
 echo -e "${blue}[+] Installing xorg... ${endColour}"
-sleep 1
+sleep 2
 sudo pacman -S --noconfirm xorg xorg-server
 check_package_installation
 
@@ -75,15 +76,15 @@ check_package_installation
 
 echo -e "${blue}[+] Starting configuration of the enviroment... ${endColour}"
 sleep 1
-
+pip install --break-packages psutil
 echo -e "${blue}Setting up Wallpaper...${endColour}"
 if [[ ! -d ~/Wallpapers ]]; then
     mkdir ~/Wallpapers
 fi
-cp -rv ${dir}/wallpapers ~/Wallpapers
+cp -rv ${dir}/wallpapers ~/
 
 echo -e "${blue}Setting up configuration files...${endColour}"
-cp -rv ${dir}/config/* ~/.config/
+cp -rv ${dir}/config/* /home/${USER}/.config/
 cp -v ${dir}/config/.bashrc ~/.bashrc
 
 echo -e "${blue}Setting up fonts...${endColour}"

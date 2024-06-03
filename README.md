@@ -1,6 +1,8 @@
 # Auto-Arch
 Auto arch is a Bash script which sets up a professional working space using the tiling window manager [qtile](https://qtile.org)
 
+## USAGE ##
+
 ## OVERVIEW 
 ![overview1](assets/overview1.png)
 ![overview2](assets/overview2.png) 

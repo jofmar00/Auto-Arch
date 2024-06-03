@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #Background
-feh --bg-fill /home/${USER}/wallpaper2.png
+feh --bg-fill /home/${USER}/wallpapers/wallpaper2.png
 #Transparency
 picom --no-vsync &
 #Network manager
