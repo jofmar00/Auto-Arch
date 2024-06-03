@@ -86,6 +86,7 @@ cp -rv ${dir}/wallpapers ~/
 echo -e "${blue}Setting up configuration files...${endColour}"
 cp -rv ${dir}/config/* /home/${USER}/.config/
 cp -v ${dir}/config/.bashrc ~/.bashrc
+cp -v ${dir}/config/starship.toml ~/.config/starhip.toml
 
 echo -e "${blue}Setting up fonts...${endColour}"
 if [[ ! -d /usr/share/fonts ]]; then
