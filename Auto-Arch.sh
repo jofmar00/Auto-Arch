@@ -9,11 +9,10 @@ yellow="\e[0;33m\033[1m"
 purple="\e[0;35m\033[1m"
 turquoise="\e[0;36m\033[1m"
 gray="\e[0;37m\033[1m"
-deleteLine="\033[K"
 
 #Variables
 dir=$(pwd)
-package_dependencies="alacritty bat base-devel exa feh firefox htop lightdm lightdm-gtk-greeter neofetch network-manager-applet picom python-pip ranger rofi scrot starship xclip"
+package_dependencies="alacritty bat base-devel exa feh firefox htop lightdm lightdm-gtk-greeter neofetch network-manager-applet pcmanfm picom python-pip ranger rofi scrot starship xclip"
 
 #####FUNCTIONS#####
 function title(){
@@ -104,7 +103,7 @@ echo -e "${green}[+] ENVIROMENT CONFIGURED SUCCESFULLY.${endColour}"
 sleep 2
 
 while true; do
-    echo -en "[?] It's necessary to restart the system. Do you want to do it now? ([y]/n):"
+    echo -en "${gray}[?] It's necessary to restart the system. Do you want to do it now? ([y]/n): ${endColour}"
     read -r
     REPLY=${REPLY:-"y"}
 

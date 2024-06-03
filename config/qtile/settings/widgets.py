@@ -26,7 +26,7 @@ def icon(fg='text', bg='dark', fontsize=16, text="?"):
 def powerline(fg="light", bg="dark"):
     return widget.TextBox(
         **base(fg, bg),
-        text=" ", # Icon: nf-oct-triangle_left
+        text="󰃭 ", # Icon: nf-md-calendar
         fontsize=40,
         padding=-12
     )
