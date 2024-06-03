@@ -13,7 +13,7 @@ deleteLine="\033[K"
 
 #Variables
 dir=$(pwd)
-package_dependencies="alacritty bat base-devel exa feh firefox htop lightdm lightdm-gtk-greeter neofetch network-manager-applet picom ranger rofi scrot starship xclip"
+package_dependencies="alacritty bat base-devel exa feh firefox htop lightdm lightdm-gtk-greeter neofetch network-manager-applet picom python-pip ranger rofi scrot starship xclip"
 
 #####FUNCTIONS#####
 function title(){
@@ -65,7 +65,7 @@ sleep 2
 sudo pacman -S --noconfirm qtile
 check_package_installation
 
-echo -e "${blue}[+] Installing needed packages for the enviroment... ${endColour}"
+echo -e "${blue}[+] Installing needed packages for the enviroment (This may take a whilemn)... ${endColour}"
 sleep 2
 sudo pacman -S --noconfirm $package_dependencies
 check_package_installation
@@ -77,15 +77,16 @@ check_package_installation
 
 echo -e "${blue}[+] Starting configuration of the enviroment... ${endColour}"
 sleep 1
-pip install --break-packages psutil
+pip install --break-system-packages psutil
 
 echo -e "${blue}Setting up Wallpaper...${endColour}"
 cp -rv ${dir}/wallpapers ~/
 
 
 echo -e "${blue}Setting up configuration files...${endColour}"
-cp -rv ${dir}/config/* /home/${USER}/.config/
+cp -rv ${dir}/config/* /home/${USER}/.config_backup/
 cp -v ${dir}/config/.bashrc ~/.bashrc
+cp -v ${dir}/config/.bash_profile ~/bash_profile
 cp -v ${dir}/config/starship.toml ~/.config/starhip.toml
 
 echo -e "${blue}Setting up fonts...${endColour}"
@@ -101,6 +102,7 @@ while true; do
     echo -en "[?] It's necessary to restart the system. Do you want to do it now? ([y]/n):"
     read -r
     REPLY=${REPLY:-"y"}
+
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         clear
         echo -e "${green}[+] REBOOTING THE SYSTEM... ${endColour}"
