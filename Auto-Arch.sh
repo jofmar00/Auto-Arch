@@ -50,6 +50,7 @@ if [ $UID -eq 0 ]; then
     exit 1
 fi
 trap ctrl_c SIGINT
+clear
 title
 export XDG_CONFIG_HOME="~/.config"
 echo -e "${blue}[+] Synchronizing package databases...${endColour}"
@@ -65,7 +66,7 @@ sleep 2
 sudo pacman -S --noconfirm qtile
 check_package_installation
 
-echo -e "${blue}[+] Installing needed packages for the enviroment (This may take a whilemn)... ${endColour}"
+echo -e "${blue}[+] Installing needed packages for the enviroment (This may take a while)... ${endColour}"
 sleep 2
 sudo pacman -S --noconfirm $package_dependencies
 check_package_installation
@@ -86,8 +87,8 @@ cp -rv ${dir}/wallpapers ~/
 echo -e "${blue}Setting up configuration files...${endColour}"
 cp -rv ${dir}/config/* /home/${USER}/.config_backup/
 cp -v ${dir}/config/.bashrc ~/.bashrc
-cp -v ${dir}/config/.bash_profile ~/bash_profile
-cp -v ${dir}/config/starship.toml ~/.config/starhip.toml
+cp -v ${dir}/config/.bash_profile ~/.bash_profile
+cp -v ${dir}/config/starship.toml ~/.config/starship.toml
 
 echo -e "${blue}Setting up fonts...${endColour}"
 if [[ ! -d /usr/share/fonts ]]; then
@@ -109,8 +110,7 @@ while true; do
         sleep 2
         sudo reboot now
     elif [[ $REPLY =~ ^[Nn]$ ]]; then
-        clear
-        echo -e "${green}[+] Script finished, reboot to apply changes.${endColour}"
+        echo -e "${green}[+] Script finished succesfully, reboot to apply changes.${endColour}"
         exit 0
     else
         echo -e "\n ${red}[!] Invalid response, please try again \n ${endColour}"
