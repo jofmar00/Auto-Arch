@@ -63,14 +63,14 @@ cd Auto-Arch
 This arch configuration uses the following software:
 - **WINDOW MANAGER**: [qtile](https://qtile.org)
 - **TERMINAL**: [alacritty](https://github.com/alacritty/alacritty)
-- **COMPOSITOR**:[picom](https://github.com/yshui/picom)
-- **WALLPAPER**:[feh](https://github.com/derf/feh)
-- **LAUNCHER**:[rofi](https://github.com/davatorium/rofi)
-- **FILE EXPLORER**:[pcmanfm](https://wiki.archlinux.org/title/PCManFM)
-- **WEB BROWSER**:[firefox](https://www.mozilla.org/en-US/firefox/new/)
+- **COMPOSITOR**: [picom](https://github.com/yshui/picom)
+- **WALLPAPER**: [feh](https://github.com/derf/feh)
+- **LAUNCHER**: [rofi](https://github.com/davatorium/rofi)
+- **FILE EXPLORER**: [pcmanfm](https://wiki.archlinux.org/title/PCManFM)
+- **WEB BROWSER**: [firefox](https://www.mozilla.org/en-US/firefox/new/)
 - **GREETER**: [lightdm](https://wiki.archlinux.org/title/LightDM)
 - **SCREENSHOT**: [scrot](https://man.archlinux.org/man/scrot.1)
-- **PROMPT**:[starship](https://starship.rs)
+- **PROMPT**: [starship](https://starship.rs)
 
 ## Credits
 - The Qtile config files are based of [Antonio Sarosi](https://github.com/antoniosarosi) dotfile repository
