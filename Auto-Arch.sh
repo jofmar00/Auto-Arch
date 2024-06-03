@@ -31,14 +31,15 @@ function check_package_installation(){
         echo -e "${red}[!] Failed to install some package, exiting...${endColour}"
         exit 1
     else
-        echo -e "${green}[+] Package installation succesfull! ${endColour}"
         clear
+        echo -e "${green}[+] Package installation succesfull! ${endColour}" 
     fi
 }
 
 function ctrl_c(){
     clear
     echo -e "$\n\n${red}[!] EXITING INSTALLATION, THIS MAY CAUSE PROBLEMS THE STATE OF YOUR MACHINE... ${endColour}\n"	
+    exit 1
 }
 
 
@@ -48,8 +49,9 @@ if [ $UID -eq 0 ]; then
     echo -e "${red}[!] You should not run ./Auto-Arch.sh as root!${endColour}"
     exit 1
 fi
+trap ctrl_c SIGINT
 title
-
+trap ctr
 echo -e "${blue}[+] Synchronizing package databases...${endColour}"
 sudo pacman -Sy
 
@@ -73,7 +75,6 @@ sleep 1
 sudo systemctl enable lightdm
 check_package_installation
 
-
 echo -e "${blue}[+] Starting configuration of the enviroment... ${endColour}"
 sleep 1
 pip install --break-packages psutil
@@ -82,6 +83,10 @@ if [[ ! -d ~/Wallpapers ]]; then
     mkdir ~/Wallpapers
 fi
 cp -rv ${dir}/wallpapers ~/
+
+echo -e "${blue}[+] STARTING QTILE${endColour}"
+sleep 5
+qtile start
 
 echo -e "${blue}Setting up configuration files...${endColour}"
 cp -rv ${dir}/config/* /home/${USER}/.config/
