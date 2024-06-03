@@ -54,6 +54,7 @@ clear
 title
 export XDG_CONFIG_HOME="~/.config"
 echo -e "${blue}[+] Synchronizing package databases...${endColour}"
+sleep 2
 sudo pacman -Sy
 
 echo -e "${blue}[+] Installing xorg... ${endColour}"
@@ -76,6 +77,7 @@ sleep 1
 sudo systemctl enable lightdm
 check_package_installation
 
+
 echo -e "${blue}[+] Starting configuration of the enviroment... ${endColour}"
 sleep 1
 pip install --break-system-packages psutil
@@ -83,11 +85,12 @@ pip install --break-system-packages psutil
 echo -e "${blue}Setting up Wallpaper...${endColour}"
 cp -rv ${dir}/wallpapers ~/
 
-
 echo -e "${blue}Setting up configuration files...${endColour}"
-cp -rv ${dir}/config/* /home/${USER}/.config_backup/
+if [[ ! -d ~/.config ]]; then
+    mkdir ~/.config
+fi
+cp -rv ${dir}/config/* ~/.config
 cp -v ${dir}/config/.bashrc ~/.bashrc
-cp -v ${dir}/config/.bash_profile ~/.bash_profile
 cp -v ${dir}/config/starship.toml ~/.config/starship.toml
 
 echo -e "${blue}Setting up fonts...${endColour}"
@@ -96,7 +99,8 @@ if [[ ! -d /usr/share/fonts ]]; then
 fi
 sudo cp -rv ${dir}/fonts /usr/share/fonts
 
-echo -e "${green}[+] Enviroment configured :)!${endColour}"
+
+echo -e "${green}[+] ENVIROMENT CONFIGURED SUCCESFULLY.${endColour}"
 sleep 2
 
 while true; do
@@ -108,7 +112,7 @@ while true; do
         clear
         echo -e "${green}[+] REBOOTING THE SYSTEM... ${endColour}"
         sleep 2
-        sudo reboot now
+        sudo reboot
     elif [[ $REPLY =~ ^[Nn]$ ]]; then
         echo -e "${green}[+] Script finished succesfully, reboot to apply changes.${endColour}"
         exit 0
