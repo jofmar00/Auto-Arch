@@ -98,6 +98,12 @@ if [[ ! -d /usr/share/fonts ]]; then
 fi
 sudo cp -rv ${dir}/fonts /usr/share/fonts
 
+echo -e "${blue}Setting up rofi theme...${endColour}"
+if [[ ! -d /usr/share/rofi/themes ]]; then
+    mkdir /usr/share/rofi/themes
+fi
+sudo cp ${dir}/themes/onedark.rasi /usr/share/rofi/themes
+
 
 echo -e "${green}[+] ENVIROMENT CONFIGURED SUCCESFULLY.${endColour}"
 sleep 2
