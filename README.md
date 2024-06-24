@@ -1,5 +1,5 @@
 # Auto-Arch
-Auto arch is a Bash script which sets up a professional working space in Arch Linux using the tiling window manager [qtile](https://qtile.org).
+Auto-Arch is a Bash script which sets up a professional working space in Arch Linux using the tiling window manager [qtile](https://qtile.org).
 
 ## Usage
 1. Clone the repository and navigate to the folder
